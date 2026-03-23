@@ -12,11 +12,10 @@
 <body>
 
 <div class="overlay"></div>
-<div class="decorative-overlay"></div>
+<div class="overlay-2"></div>
 
 <div class="content">
 
-  <!-- Titlu -->
   <div class="section fade-in">
     <div class="names">Daiana & Dragoș</div>
     <div class="subtitle">vă invită cu drag să le fiți alături</div>
@@ -24,7 +23,6 @@
     <p>5 Iulie 2026</p>
   </div>
 
-  <!-- Părinți și Nași -->
   <div class="section small fade-in">
     <p>Alături de părinții lor</p>
     <p><strong>Carmen Lăcrămioara și Sorin Ioan Pop</strong></p>
@@ -34,37 +32,31 @@
     <p><strong>Raluca și Sorin Răzvan Cercel</strong></p>
   </div>
 
-  <!-- Ceremonie -->
   <div class="section fade-in">
     <div class="divider"></div>
     <p><strong>Ceremonia religioasă</strong></p>
     <p>Ora 13:00</p>
     <p>Biserica "Adormirea Maicii Domnului" Militari I</p>
-    <p class="small">Strada Orșova, nr. 4, Sector 6, București</p>
+    <p class="small">Strada Orșova, nr. 4, București</p>
   </div>
 
-  <!-- Harta ceremoniei -->
   <div class="section fade-in">
-    <p><strong>Harta ceremoniei</strong></p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps?q=Strada%20Or%C8%99ova%204%20Bucuresti&output=embed"></iframe>
+      <iframe src="https://www.google.com/maps?q=Strada%20Orsova%204%20Bucuresti&output=embed"></iframe>
     </div>
   </div>
 
-  <!-- Recepție -->
   <div class="section fade-in">
     <div class="divider"></div>
     <p><strong>Recepția</strong></p>
     <p>Ora 15:00</p>
     <p>Restaurant Vibere Events</p>
-    <p class="small">Str. Virtuții, nr. 55, Sector 6, București</p>
+    <p class="small">Str. Virtuții, nr. 55, București</p>
   </div>
 
-  <!-- Harta recepției -->
   <div class="section fade-in">
-    <p><strong>Harta recepției</strong></p>
     <div class="map-container">
-      <iframe src="https://www.google.com/maps?q=Str.%20Virtutii%2055%20Bucuresti&output=embed"></iframe>
+      <iframe src="https://www.google.com/maps?q=Virtutii%2055%20Bucuresti&output=embed"></iframe>
     </div>
   </div>
 
@@ -88,7 +80,7 @@
         </select>
 
         <label>Copii</label>
-        <select name="copii" id="copii">
+        <select id="copii" name="copii">
           <option>Nu</option>
           <option>Da</option>
         </select>
@@ -103,43 +95,33 @@
     </div>
   </div>
 
-  <!-- Final -->
   <div class="section small fade-in">
     <div class="divider"></div>
     <p>„Unde cuvintele se opresc, muzica începe.”</p>
-    <p>Vă așteptăm cu drag să sărbătorim împreună această zi specială!</p>
   </div>
 
 </div>
 
 <script>
-// copii logic
 const copiiSelect = document.getElementById("copii");
 const nrCopii = document.getElementById("nr_copii");
 nrCopii.classList.add("hidden");
 
-copiiSelect.addEventListener("change", function() {
-  if (this.value === "Da") {
-    nrCopii.classList.remove("hidden");
-  } else {
-    nrCopii.classList.add("hidden");
-  }
+copiiSelect.addEventListener("change", () => {
+  nrCopii.classList.toggle("hidden", copiiSelect.value !== "Da");
 });
 
-// form submit
 const form = document.getElementById("rsvp-form");
 const successMessage = document.getElementById("success-message");
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
-  const data = new FormData(form);
-
   fetch(form.action, {
     method: "POST",
-    body: data,
+    body: new FormData(form),
     headers: { 'Accept': 'application/json' }
-  }).then(response => {
-    if (response.ok) {
+  }).then(res => {
+    if (res.ok) {
       form.reset();
       nrCopii.classList.add("hidden");
       successMessage.classList.remove("hidden");
