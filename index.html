@@ -16,7 +16,7 @@
 <div class="content">
 
   <!-- Titlu -->
-  <div class="section">
+  <div class="section fade-in">
     <div class="names">Daiana & Dragoș</div>
     <div class="subtitle">vă invită cu drag să le fiți alături</div>
     <div class="divider"></div>
@@ -24,7 +24,7 @@
   </div>
 
   <!-- Părinți și Nași -->
-  <div class="section small">
+  <div class="section small fade-in">
     <p>Alături de părinții lor</p>
     <p><strong>Carmen Lăcrămioara & Sorin Ioan Pop</strong></p>
     <p><strong>Emilia & Alexandru Stama</strong></p>
@@ -36,7 +36,7 @@
   </div>
 
   <!-- Ceremonie -->
-  <div class="section">
+  <div class="section fade-in">
     <div class="divider"></div>
     <p><strong>Ceremonia religioasă</strong></p>
     <p>Ora 13:00</p>
@@ -44,8 +44,16 @@
     <p class="small">Strada Orșova, nr. 4, Sector 6, București</p>
   </div>
 
+  <!-- Ceremonie Map -->
+  <div class="section fade-in">
+    <p><strong>Harta ceremoniei</strong></p>
+    <div class="map-container">
+      <iframe src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.632547676351!2d26.031723676729094!3d44.44069917107559!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b201bb8397d17d%3A0xdb62ce3883fdacbb!2sBiserica%20%22Adormirea%20Maicii%20Domnului%22%20Militari%20I!5e0!3m2!1sro!2sro!4v1774245431397!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+
   <!-- Recepție -->
-  <div class="section">
+  <div class="section fade-in">
     <div class="divider"></div>
     <p><strong>Recepția</strong></p>
     <p>Ora 15:00</p>
@@ -53,45 +61,91 @@
     <p class="small">Str. Virtuții, nr. 55, Sector 6, București</p>
   </div>
 
+  <!-- Recepție Map -->
+  <div class="section fade-in">
+    <p><strong>Harta recepției</strong></p>
+    <div class="map-container">
+      <iframe src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2848.2438511040123!2d26.040244476729452!3d44.448670771075506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b20118cd1e25a9%3A0xbb8a863c2bf31c79!2sVibere%20Events!5e0!3m2!1sro!2sro!4v1774245516920!5m2!1sro!2sro" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </div>
+
   <!-- RSVP -->
-  <div class="section">
+  <div class="section fade-in">
     <div class="divider"></div>
     <p><strong>Confirmare prezență</strong></p>
 
-    <form action="https://formspree.io/f/XXXXX" method="POST">
+    <div class="form-container">
+      <form action="https://formspree.io/f/XXXXX" method="POST" id="rsvp-form">
 
-      <input type="text" name="nume" placeholder="Nume și prenume" required>
+        <input type="text" name="nume" placeholder="Nume și prenume" required>
 
-      <label>Intoleranțe alimentare:</label>
-      <input type="text" name="intolerante" placeholder="Ex: gluten, lactoză, altele">
+        <label>Intoleranțe alimentare</label>
+        <input type="text" name="intolerante" placeholder="Ex: gluten, lactoză">
 
-      <label>Veți participa însoțit(ă)?</label>
-      <select name="plus_one">
-        <option value="Nu">Nu</option>
-        <option value="Da">Da</option>
-      </select>
+        <label>Veți participa însoțit(ă)?</label>
+        <select name="plus_one">
+          <option>Nu</option>
+          <option>Da</option>
+        </select>
 
-      <label>Copii:</label>
-      <select name="copii">
-        <option value="Nu">Nu</option>
-        <option value="Da">Da</option>
-      </select>
+        <label>Copii</label>
+        <select name="copii" id="copii">
+          <option>Nu</option>
+          <option>Da</option>
+        </select>
 
-      <input type="number" name="nr_copii" placeholder="Număr copii (dacă există)">
+        <input type="number" id="nr_copii" name="nr_copii" placeholder="Număr copii (dacă există)">
 
-      <button type="submit">Trimite confirmarea</button>
+        <button type="submit">Trimite confirmarea</button>
 
-    </form>
+      </form>
+      <p id="success-message" class="hidden">Mulțumim pentru confirmare! 💌</p>
+    </div>
   </div>
 
   <!-- Mesaj final -->
-  <div class="section small">
+  <div class="section small fade-in">
     <div class="divider"></div>
     <p>„Unde cuvintele se opresc, muzica începe.”</p>
     <p>Vă așteptăm cu drag să sărbătorim împreună această zi specială!</p>
   </div>
 
 </div>
+
+<!-- SCRIPTS -->
+<script>
+// Show/hide nr copii dynamically
+const copiiSelect = document.getElementById("copii");
+const nrCopii = document.getElementById("nr_copii");
+nrCopii.classList.add("hidden");
+copiiSelect.addEventListener("change", function() {
+  if (this.value === "Da") {
+    nrCopii.classList.remove("hidden");
+  } else {
+    nrCopii.classList.add("hidden");
+  }
+});
+
+// Success message after submit
+const form = document.getElementById("rsvp-form");
+const successMessage = document.getElementById("success-message");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const data = new FormData(form);
+  fetch(form.action, {
+    method: "POST",
+    body: data,
+    headers: {'Accept': 'application/json'}
+  }).then(response => {
+    if (response.ok) {
+      form.reset();
+      nrCopii.classList.add("hidden"); // hide children field after submit
+      successMessage.classList.remove("hidden");
+    }
+  });
+});
+</script>
 
 </body>
 </html>
