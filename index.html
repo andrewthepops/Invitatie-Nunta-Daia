@@ -11,8 +11,12 @@
 
 <body>
 
+<!-- Background -->
 <div class="overlay"></div>
-<div class="overlay-2"></div>
+
+<!-- Instruments -->
+<img class="instrument violin" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Violin_VL100.png">
+<img class="instrument piano" src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Piano_diagram.png">
 
 <div class="content">
 
@@ -116,6 +120,7 @@ const successMessage = document.getElementById("success-message");
 
 form.addEventListener("submit", function(e) {
   e.preventDefault();
+
   fetch(form.action, {
     method: "POST",
     body: new FormData(form),
