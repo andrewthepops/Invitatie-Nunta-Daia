@@ -79,7 +79,7 @@ body {
   <!-- Părinți și Nași -->
   <div class="section small">
     <p>Alături de părinții lor</p>
-    <p><strong>Carmen Lăcrămioara și Sorin Ioan Pop</strong></p>
+    <p><strong>Carmen Lăcrămioara & Sorin Ioan Pop</strong></p>
     <p><strong>Emilia & Alexandru Stama</strong></p>
 
     <br>
@@ -112,6 +112,45 @@ body {
     <p>„Unde cuvintele se opresc, muzica începe.”</p>
     <p>Vă așteptăm cu drag să sărbătorim împreună această zi specială!</p>
   </div>
+  <div class="section">
+  <div class="divider"></div>
+  <p><strong>Confirmare prezență</strong></p>
+
+  <form action="https://formspree.io/f/xojkoejv" method="POST">
+
+    <input type="text" name="nume" placeholder="Nume și prenume" required>
+
+    <br><br>
+
+    <label>Intoleranțe alimentare:</label><br>
+    <input type="text" name="intolerante" placeholder="Ex: gluten, lactoză, altele">
+
+    <br><br>
+
+    <label>Veți participa însoțit(ă)?</label><br>
+    <select name="plus_one">
+      <option value="Nu">Nu</option>
+      <option value="Da">Da</option>
+    </select>
+
+    <br><br>
+
+    <label>Copii:</label><br>
+    <select name="copii">
+      <option value="Nu">Nu</option>
+      <option value="Da">Da</option>
+    </select>
+
+    <br><br>
+
+    <input type="number" name="nr_copii" placeholder="Număr copii (dacă există)">
+
+    <br><br>
+
+    <button type="submit">Trimite confirmarea</button>
+
+  </form>
+</div>
 
 </div>
 
