@@ -2,8 +2,8 @@ body {
   margin: 0;
   background: #F5F1E8;
   font-family: 'Playfair Display', serif;
-  text-align: center;
   color: #3a3a3a;
+  text-align: center;
 }
 
 /* BACKGROUND */
@@ -11,70 +11,73 @@ body {
   position: fixed;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
-
   background:
     url('https://www.transparenttextures.com/patterns/cream-paper.png'),
-    url('https://www.pngall.com/wp-content/uploads/5/Floral-PNG-Image.png'),
-    url('https://www.pngall.com/wp-content/uploads/2016/04/Violin-Free-Download-PNG.png');
-
-  background-repeat: repeat, no-repeat, no-repeat;
-  background-position: center, top left, bottom right;
-  background-size: auto, 300px, 250px;
-
-  opacity: 0.08;
+    url('https://www.pngall.com/wp-content/uploads/5/Floral-PNG-Image.png');
+  background-size: auto, 400px;
+  background-position: center, top left;
+  opacity: 0.15;
 }
 
-.decorative-overlay {
+.overlay-2 {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: url('https://www.pngall.com/wp-content/uploads/2016/06/Piano-Free-Download-PNG.png') no-repeat right center;
-  background-size: 300px;
-  opacity: 0.05;
+  background:
+    url('https://www.pngall.com/wp-content/uploads/2016/04/Violin-Free-Download-PNG.png'),
+    url('https://www.pngall.com/wp-content/uploads/2016/06/Piano-Free-Download-PNG.png');
+  background-size: 300px, 300px;
+  background-position: bottom right, center right;
+  background-repeat: no-repeat;
+  opacity: 0.12;
 }
 
 /* CONTENT */
 .content {
   position: relative;
-  padding: 60px 20px;
-  max-width: 800px;
+  padding: 80px 20px;
+  max-width: 850px;
   margin: auto;
 }
 
 .names {
   font-family: 'Great Vibes', cursive;
-  font-size: 64px;
+  font-size: 72px;
 }
 
 .subtitle {
-  letter-spacing: 2px;
-  font-size: 14px;
+  letter-spacing: 3px;
+  font-size: 13px;
 }
 
 .divider {
-  width: 120px;
+  width: 140px;
   height: 1px;
-  background: #C8A96A;
-  margin: 25px auto;
+  background: linear-gradient(to right, transparent, #C8A96A, transparent);
+  margin: 30px auto;
 }
 
 .section {
-  margin: 40px 0;
+  margin: 60px 0;
 }
 
 .small {
   font-size: 15px;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 /* ANIMATION */
 .fade-in {
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease forwards;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s ease forwards;
 }
+
+.fade-in:nth-child(1) { animation-delay: 0.2s; }
+.fade-in:nth-child(2) { animation-delay: 0.4s; }
+.fade-in:nth-child(3) { animation-delay: 0.6s; }
+.fade-in:nth-child(4) { animation-delay: 0.8s; }
+.fade-in:nth-child(5) { animation-delay: 1s; }
 
 @keyframes fadeInUp {
   to {
@@ -86,45 +89,59 @@ body {
 /* MAP */
 .map-container {
   width: 100%;
-  max-width: 600px;
-  height: 300px;
-  margin: 20px auto;
-  border-radius: 12px;
+  max-width: 650px;
+  height: 320px;
+  margin: auto;
+  border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 /* FORM */
 .form-container {
-  background: rgba(255,255,255,0.85);
-  padding: 30px;
-  border-radius: 12px;
-  max-width: 500px;
-  margin: auto;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(8px);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
 
 input, select {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
+  padding: 12px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+input:focus, select:focus {
+  border-color: #C8A96A;
+  box-shadow: 0 0 0 3px rgba(200,169,106,0.2);
 }
 
 button {
-  background: #C8A96A;
+  background: linear-gradient(135deg, #C8A96A, #b89655);
   color: white;
-  padding: 12px;
+  padding: 14px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
 #success-message {
-  margin-top: 15px;
-  color: green;
+  margin-top: 20px;
+  color: #6b8e6b;
 }
 
 .hidden {
