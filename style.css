@@ -4,7 +4,7 @@ body {
   text-align: center;
   color: #3a3a3a;
 
-  background: url("background.jpg") no-repeat center center fixed;
+  background: url("background.png") no-repeat center center fixed;
   background-size: cover;
 }
 
