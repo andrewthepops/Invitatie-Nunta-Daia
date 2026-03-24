@@ -1,60 +1,34 @@
 body {
   margin: 0;
-  background: #F5F1E8;
   font-family: 'Playfair Display', serif;
   text-align: center;
   color: #3a3a3a;
+
+  background: url("background.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
-/* BACKGROUND */
-.overlay {
+/* SOFT OVERLAY */
+body::before {
+  content: "";
   position: fixed;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-
-  background:
-    url("https://www.transparenttextures.com/patterns/cream-paper.png"),
-    url("https://upload.wikimedia.org/wikipedia/commons/3/3f/Floral_pattern.svg"),
-    url("https://upload.wikimedia.org/wikipedia/commons/6/6a/Sheet_music.jpg");
-
-  background-size: auto, 600px, cover;
-  background-repeat: repeat, no-repeat, no-repeat;
-  background-position: center, top left, center;
-
-  opacity: 0.18;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
   z-index: 0;
 }
 
-/* INSTRUMENTS */
-.instrument {
-  position: fixed;
-  width: 220px;
-  opacity: 0.18;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.violin {
-  bottom: 20px;
-  right: 20px;
-}
-
-.piano {
-  top: 40%;
-  right: 0;
-}
-
-/* CONTENT */
+/* ALIGN CONTENT INSIDE FRAME */
 .content {
   position: relative;
   z-index: 1;
-  padding: 80px 20px;
-  max-width: 850px;
+
+  max-width: 900px;
   margin: auto;
+
+  padding: 120px 60px; /* aligns inside golden frame */
 }
 
+/* TEXT */
 .names {
   font-family: 'Great Vibes', cursive;
   font-size: 72px;
@@ -81,17 +55,12 @@ body {
   line-height: 1.9;
 }
 
-/* ANIMATION */
+/* FADE ANIMATION */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1.2s ease forwards;
 }
-
-.fade-in:nth-child(1) { animation-delay: 0.2s; }
-.fade-in:nth-child(2) { animation-delay: 0.4s; }
-.fade-in:nth-child(3) { animation-delay: 0.6s; }
-.fade-in:nth-child(4) { animation-delay: 0.8s; }
 
 @keyframes fadeInUp {
   to {
@@ -103,9 +72,7 @@ body {
 /* MAP */
 .map-container {
   width: 100%;
-  max-width: 650px;
-  height: 320px;
-  margin: auto;
+  height: 300px;
   border-radius: 16px;
   overflow: hidden;
 }
@@ -113,7 +80,6 @@ body {
 /* FORM */
 .form-container {
   background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(8px);
   padding: 40px;
   border-radius: 16px;
 }
@@ -136,14 +102,38 @@ button {
   padding: 14px;
   border-radius: 8px;
   border: none;
-  cursor: pointer;
 }
 
-#success-message {
-  margin-top: 20px;
-  color: #6b8e6b;
-}
-
+/* SUCCESS */
 .hidden {
   display: none;
+}
+
+/* MUSIC ICONS */
+.music-icon {
+  position: fixed;
+  width: 110px;
+  opacity: 0.10;
+  z-index: 0;
+  pointer-events: none;
+  filter: grayscale(100%);
+}
+
+.violin { top: 12%; left: 5%; }
+.note { bottom: 15%; left: 8%; }
+.staff { top: 25%; right: 5%; }
+
+/* FLOATING ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: float 10s ease-in-out infinite;
 }
