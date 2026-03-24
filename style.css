@@ -108,32 +108,3 @@ button {
 .hidden {
   display: none;
 }
-
-/* MUSIC ICONS */
-.music-icon {
-  position: fixed;
-  width: 110px;
-  opacity: 0.10;
-  z-index: 0;
-  pointer-events: none;
-  filter: grayscale(100%);
-}
-
-.violin { top: 12%; left: 5%; }
-.note { bottom: 15%; left: 8%; }
-.staff { top: 25%; right: 5%; }
-
-/* FLOATING ANIMATION */
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
-}
-
-.float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.float-slow {
-  animation: float 10s ease-in-out infinite;
-}
