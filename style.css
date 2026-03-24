@@ -108,3 +108,10 @@ button {
 .hidden {
   display: none;
 }
+
+@media (max-width: 768px) {
+  body {
+    background-size: 160%;
+    background-position: center 20%;
+  }
+}
